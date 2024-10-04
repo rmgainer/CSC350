@@ -1,5 +1,4 @@
-<?php session_start(); 
-$_SESSION['whoseturn'] = 'X'; ?>
+<?php session_start(); ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -24,8 +23,9 @@ $_SESSION['whoseturn'] = 'X'; ?>
             }
             print "</tr>";
         }
-        print "</form></table>"; 
+        print "</form></table>";
     }
+
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         for ($i = 1; $i <= 3; $i++) {
@@ -40,10 +40,19 @@ $_SESSION['whoseturn'] = 'X'; ?>
                 }
             }
         }
+
     } else {
         $whoseturn = 'X';
     }
-    printboard($whoseturn);
+    $winner = whoIsWinner();
+    if ($winner != null) {
+        print "The winner is " . $winner . "!";
+    } else if ($count == 9) {
+        print "It's a draw";
+    } else {
+        printboard($whoseturn);
+    }
+
 ?>
 
 </body>
