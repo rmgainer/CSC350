@@ -6,8 +6,53 @@
 <head>
     <title>Tic Tac Toe</title>
     <h1>Tic Tac Toe</h1>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="HandheldFriendly" content="True">
+	<title>Tic Tac Toe</title>
+	<style>
+		/* Button background is blue with a black border*/
+		button {
+			background-color: #3498db;
+			height: 100%;
+			width: 100%;
+			text-align: center;
+			font-size: 20px;
+			color: white;
+			vertical-align: middle;
+			border: 0px;
+		}
+
+		/* Styles the table cells to look like a tic-tac-toe grid */
+		table td {
+			text-align: center;
+			vertical-align: middle;
+			padding: 0px;
+			margin: 0px;
+			width: 75px;
+			height: 75px;
+			font-size: 20px;
+			border: 3px solid #040404;
+			color: white;
+		}
+
+		/* This shows a darker blue background when the mouse hovers over the buttons */
+		button:hover,
+		input[type="submit"]:hover,
+		button:focus,
+		input[type="submit"]:focus {
+			background-color: #04469d;
+			text-decoration: none;
+			outline: none;
+		}
+
+	</style>
+    
 </head>
 <body>
+
 <?php 
     include 'tic-tac-toe-functions.php'; 
 
@@ -32,7 +77,7 @@
                     print $_SESSION["$j-$i"];
                 } else {
                     if (!$gameover) {
-                        print "><input type='submit' name='$j-$i' value='$whoseturn'>";
+                        print "><button type='submit' name='$j-$i' value='$whoseturn'>$whoseturn</button>";
                     } else {
                         print " ";
                     }
@@ -45,7 +90,6 @@
     }
 
     function restart($whoseturn) {
-        $gameover = true;
         printboard($whoseturn, true);
         $_SESSION = array();
         session_destroy();
