@@ -1,6 +1,26 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <style>
+        body {
+            font-family: sans-serif;
+            font-size: 16px;
+        }
+        .button {
+            border: none;
+            background-color: mediumseagreen;
+            color: white;
+            font-size: 16px;
+            padding: 8px;
+            text-align: center;
+            transition-duration: 0.4s;
+            width: 160px;
+        }
+        .button:hover {
+            background-color: seagreen;
+        }
+    </style>
+    <div w3-include-html="gradestyles.html"></div>
 	<meta charset="utf-8">
 	<title>Enter Grades</title>
 </head>
@@ -51,7 +71,7 @@
     }
 ?>
 
-<div><p>Please select a student and enter their scores.</p></div>
+<div><p>Please select a student to enter or update their scores.</p></div>
     <form method = "post" action = "entergrades.php">
     <table>
         <tr><td><label for="studentID">Select student: </label> 
@@ -68,17 +88,16 @@
         <?php endwhile; ?>
         
         
-        <tr><td>
-        <input type="submit" value="Enter grades">
-        </tr>
-
-    </form>
-    <form method="post" action="viewgrades.php">
-        <tr><td>
-        <input type="submit" value="See final grades">
-        </tr>
-    </form>
     </table>
+    <br>
+    <input type="submit" class="button" value="Enter grades">
+    </form>
+
+    <br>
+
+    <form method="post" action="viewgrades.php">
+        <input type="submit" class="button" value="See final grades">
+    </form>
 
 </body>
 </html>

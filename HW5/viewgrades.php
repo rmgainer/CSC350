@@ -1,6 +1,40 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <div w3-include-html="gradestyles.html"></div>
+    <style>
+        body {
+            font-family: sans-serif;
+            font-size: 16px;
+        }
+        .button {
+            border: none;
+            background-color: mediumseagreen;
+            color: white;
+            font-size: 16px;
+            padding: 8px;
+            text-align: center;
+            transition-duration: 0.4s;
+            width: 160px;
+        }
+        .button:hover {
+            background-color: seagreen;
+        }
+        table, td, th {
+            border-collapse: collapse;
+        }
+        td, th {
+            padding: 8px;
+            text-align: left;
+        }
+        tr:nth-child(even) {background-color: #f2f2f2;}
+        th {
+            background-color: mediumseagreen;
+            color: white;
+            font-weight: normal;
+        }
+    </style>
+
 	<meta charset="utf-8">
 	<title>Final Grades</title>
 </head>
@@ -69,7 +103,7 @@
 ?>
 </table>
 <br>
-<a href="entergrades.php"><button>Enter more grades</button></a>
+<a href="entergrades.php"><button class="button">Enter more grades</button></a>
 
 </body>
 </html>
