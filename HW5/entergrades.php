@@ -40,7 +40,10 @@
     if ($_SERVER['REQUEST_METHOD'] == 'POST') { //if form is submitted
         $studentID = $_POST['studentID'];
         foreach ($_POST['grades'] AS $num => $grade) {
-            $grades[$num + 1] = $grade; //since autoinc starts at 1
+            if (is_numeric($grade))
+                $grades[$num + 1] = $grade; //since autoinc starts at 1
+            else
+                $error = true;
         }
         $query = "SELECT * FROM Scores WHERE studentID = $studentID;";
         $result = mysqli_query($conn, $query);
