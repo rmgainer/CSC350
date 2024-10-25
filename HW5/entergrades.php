@@ -25,7 +25,6 @@
         $query = "SELECT * FROM Scores WHERE studentID = $studentID;";
         $result = mysqli_query($conn, $query);
         if ($result->num_rows > 0) { //if student already has grades entered
-            //while ($row = mysqli_fetch_array($assignments)) {
             foreach ($grades AS $assignmentID => $grade) {
                 $sql = "UPDATE Scores SET grade = $grade WHERE studentID = $studentID AND assignmentID = $assignmentID;";  
                 if (!($result = mysqli_query($conn, $sql))) {
@@ -33,7 +32,6 @@
                 }
             } 
         } else { //if student does not exist in Scores table
-            //while ($row = mysqli_fetch_array($assignments)) {
             foreach ($grades AS $assignmentID => $grade) {
                 $sql = "INSERT INTO Scores (studentID, assignmentID, grade)
                 VALUES ('$studentID', '$assignmentID', '$grade');";
@@ -66,14 +64,21 @@
         </select></tr>
         
         <?php while ($row = mysqli_fetch_array($assignments)) : ?>
-            <tr><td><?php print $row['assignmentName']; ?>: </td><td><input type='number' name='grades[]' min='0' max='120' required>
+            <tr><td><?php print $row['assignmentName']; ?>:</td><td><input type='number' name='grades[]' min='0' max='120' required>
         <?php endwhile; ?>
         
-        </table>
-        <br>
+        
+        <tr><td>
         <input type="submit" value="Enter grades">
+        </tr>
 
     </form>
+    <form method="post" action="viewgrades.php">
+        <tr><td>
+        <input type="submit" value="See final grades">
+        </tr>
+    </form>
+    </table>
 
 </body>
 </html>
