@@ -43,9 +43,12 @@
             }
         }
         if ($error) {
-            print "<p>ERROR SOMETHING IS WRONG</p>";
+            print "<p>Something went wrong. Please try again.</p>";
         } else {
-            print "<p>Grades successfully submitted.</p>";
+            $sql = "SELECT firstName, lastName FROM Students WHERE studentID = $studentID;";
+            $result = mysqli_query($conn, $sql);
+            while ($row = mysqli_fetch_array($result))
+                print "<p>Grades successfully submitted for " . $row['firstName'] . " " . $row['lastName'] . ".</p>";
         }
     }
 ?>
