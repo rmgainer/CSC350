@@ -1,6 +1,7 @@
 <?php
 require_once "dbc.php";
 require_once "viewgrades.php";
+require_once "unitTestingHelper.php";
 
 function create_test_student() {
     $conn = getDatabaseConnection();
